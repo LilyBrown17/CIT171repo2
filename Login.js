@@ -1,27 +1,39 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { useState } from "react";
+import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
 
-const UselessTextInput = () => {
-  const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [oneTimePassword, setOneTimePassword] = React.useState("");
+const sendText=(phoneNumber)=>{
+  console.log("PhoneNumber: ", phoneNumber);
+};
+
+const Login = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [oneTimePassword, setOneTimePassword] = useState(null);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.margin}>
       <TextInput
         style={styles.input}
         onChangeText={setPhoneNumber}
         value={phoneNumber}
         placeholder="801-555-1212"
+        placeholderTextColor="#4251F5"
         keyboardType="numeric"
       />
+      <TouchableOpacity style={styles.button} onPress={()=>{sendText(phoneNumber)}}>
+        <Text>Send Text</Text>
+      </TouchableOpacity>
       <TextInput
         style={styles.input}
         onChangeText={setOneTimePassword}
         value={oneTimePassword}
         placeholder="1234"
+        placeholderTextColor="#4251F5"
         keyboardType="numeric"
         secureTextEntry={true}
       />
+      <TouchableOpacity style={styles.button} onPress={()=>{console.log("Login Button was pressed")}}>
+        <Text>Login</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -33,9 +45,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  margin:{
+  margin: {
     marginTop:100
+  },
+  button: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 10
   }
 });
 
-export default UselessTextInput;
+export default Login;
