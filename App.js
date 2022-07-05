@@ -1,15 +1,15 @@
 import {useState} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import {StyleSheet,Text,View,Image,TouchableOpacity} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import Counter from './Counter.js';
 import Login from './Login.js';
 import SettingsScreen from './SettingsScreen.js';
 import Home from './Home.js';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Icons from "./Icons";
 
-// import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
@@ -25,10 +25,11 @@ export default function App() {
       >
         <Tab.Screen
           name='Home'
+          children={()=><Home loggedInUser='email goes here'/>}
           component={Home}
           options={{
             tabBarLabel: 'Home',
-            tabBarIcon: ({ color }) => (
+            tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name='home' color={color} size={26} />
             ),
           }}
@@ -38,7 +39,7 @@ export default function App() {
           component={Counter}
           options={{
             tabBarLabel: 'Step Counter',
-            tabBarIcon: ({ color }) => (
+            tabBarIcon: ({color}) => (
               <MaterialCommunityIcons name='watch' color={color} size={26} />
             ),
           }}
@@ -48,7 +49,7 @@ export default function App() {
           component={SettingsScreen}
           options={{
             tabBarLabel: 'Settings',
-            tabBarIcon: ({ color }) => (
+            tabBarIcon: ({color}) => (
               <FontAwesome name='gear' color={color} size={26} />
             ),
           }}

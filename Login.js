@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
+import {useState} from "react";
+import {SafeAreaView,StyleSheet,TextInput,Text,TouchableOpacity} from "react-native";
 
 const sendText = async (phoneNumber) => {
   console.log("PhoneNumber: ", phoneNumber);
@@ -20,6 +20,7 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
   if(responseCode==200)
     setUserLoggedIn(true);
   const tokenResponseString = await tokenResponse.text();
+  const userEmailGet = await fetch('https://dev.stedi.me/validate/'+tokenResponseString);
 };
 
 const Login = (props) => {
