@@ -13,7 +13,8 @@ import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(true);
+  const [userName, setUserName] = useState("");
 
   if (userLoggedIn){
     return (
@@ -25,8 +26,8 @@ export default function App() {
         >
           <Tab.Screen
             name='Home'
-            children={()=><Home loggedInUser='email goes here'/>}
-            component={Home}
+            children={()=><Home loggedInUser={userName}/>}
+            //component={Home}
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({color}) => (
@@ -59,7 +60,7 @@ export default function App() {
     );      
   } else {
     return(
-      <Login setUserLoggedIn={setUserLoggedIn}/>
+      <Login setUserLoggedIn={setUserLoggedIn} setUserName={setUserName}/>
     );
   }
 };

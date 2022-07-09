@@ -20,7 +20,9 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
   if(responseCode==200)
     setUserLoggedIn(true);
   const tokenResponseString = await tokenResponse.text();
-  const userEmailGet = await fetch('https://dev.stedi.me/validate/'+tokenResponseString);
+  const getUserEmail = await fetch('https://dev.stedi.me/validate/'+tokenResponseString);
+  const userEmail = await getUserEmail.text();
+  props.setUserName(userEmail);
 };
 
 const Login = (props) => {
