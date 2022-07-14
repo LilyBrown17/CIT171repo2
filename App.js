@@ -8,15 +8,16 @@ import Home from './Home.js';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Icons from "./Icons";
+//import Icons from "./Icons";
 
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState(true);
-  const [userName, setUserName] = useState("");
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
 
   if (userLoggedIn){
+    console.log(userName);
     return (
       <NavigationContainer>
         <Tab.Navigator
